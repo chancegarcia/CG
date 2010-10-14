@@ -1,15 +1,15 @@
 <?
 /**
- * Auth plugin for most internal My projects. 
+ * Auth plugin 
  * utilizes a whitelisted LDAP
  * @internal this plugin will lazy-load acl and auth from the registry
  * 
- * @category   My
- * @package    My_Controller
- * @subpackage My_Controller_Plugin
- * @version 0.0.1
- * @author chancegarcia.com
- * @license http://www.opensource.org/licenses/lgpl-3.0.html
+ * @category    My
+ * @package     My_Controller
+ * @subpackage  My_Controller_Plugin
+ * @version     0.0.1
+ * @author      chancegarcia.com
+ * @license     http://www.opensource.org/licenses/lgpl-3.0.html
  */
 class My_Controller_Plugin_Auth extends 
 Zend_Controller_Plugin_Abstract{

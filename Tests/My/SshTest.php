@@ -5,7 +5,16 @@
 
  object only manages single connections. refactor later to manage multiple?()
  */
-
+/**
+ * tests for My_Ssh
+ * @todo only implementing a few of the functions. need to implement all in the future
+ * @todo finish properly documenting these tests
+ * @category    My
+ * @package     My_Tests
+ * @version     0.1
+ * @author      chancegarcia.com
+ * @license     http://www.opensource.org/licenses/lgpl-3.0.html
+ */
 class MySshTest extends PHPUnit_Framework_Testcase
 {
     protected $_fixture;

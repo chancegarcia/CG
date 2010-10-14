@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * unit tests for My_Auth_Adapter_Ldap
+ * @todo finish properly documenting these tests
+ * @category    My
+ * @package     My_Tests
+ * @version     0.0.1
+ * @author      chancegarcia.com
+ * @license     http://www.opensource.org/licenses/lgpl-3.0.html
+ */
 class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
     protected $_fixture;
     
@@ -10,7 +18,13 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
     protected function tearDown() {
         unset($this->_fixture);
     }
-    
+    /**
+     * Ldap can sometimes give an error where it authenticates but doesn't find
+     * the account object. 
+     * This function replicates the auth result of this situation so that we
+     * don't encounter this false negative.
+     * @return Zend_Auth_Result
+     */
     protected function _getLdapJustKiddingFailure()
     {
         return new Zend_Auth_Result(
@@ -28,6 +42,13 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
             );
     }
     
+    /**
+     * Ldap can sometimes give an error where it authenticates but doesn't find
+     * the account object.
+     * 
+     * This function replicates a valid error.
+     * @return Zend_Auth_Result
+     */
     protected function _getLdapValidFailure()
     {
         return new Zend_Auth_Result(

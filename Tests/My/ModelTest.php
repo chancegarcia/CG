@@ -4,7 +4,15 @@ require_once('PHPUnit/Framework.php');
 require_once ('Zend/Loader/Autoloader.php');
 $loader = Zend_Loader_Autoloader::getInstance();
 $loader->registerNamespace('My_');
-
+/**
+ * tests for My_Model
+ * @todo finish properly documenting these tests
+ * @category    My
+ * @package     My_Tests
+ * @version     0.1
+ * @author      chancegarcia.com
+ * @license     http://www.opensource.org/licenses/lgpl-3.0.html
+ */
 class MyModelTest extends PHPUnit_Framework_Testcase {
     
     protected $_fixture;

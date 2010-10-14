@@ -4,7 +4,7 @@
 contains newlines. use nl2br for web formatting.
  * @category    My
  * @package     My_Controller_Plugin
- * @subpackage  My_Controller_Plugin_Auth_
+ * @subpackage  My_Controller_Plugin_Auth
  * @version 0.3.0
  * @author chancegarcia.com
  * @license http://www.opensource.org/licenses/lgpl-3.0.html
