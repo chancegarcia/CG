@@ -367,6 +367,7 @@ class My_Ssh{
     }
     
     /**
+     * @todo take out the escaping of the command. put the onus on the user or develop smart detection system
      * Remotely execute a command
      */
     public function exec($cmd=null)
