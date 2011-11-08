@@ -1,26 +1,21 @@
 <?php
-
-require_once('PHPUnit/Framework.php');
-require_once ('Zend/Loader/Autoloader.php');
-$loader = Zend_Loader_Autoloader::getInstance();
-$loader->registerNamespace('My_');
 /**
- * tests for My_Model
+ * tests for CG_Model
  * @todo finish properly documenting these tests
- * @category    My
- * @package     My_Tests
+ * @category    CG
+ * @package     CG_Tests
  * @version     0.1
  * @author      chancegarcia.com
  * @license     http://www.opensource.org/licenses/lgpl-3.0.html
  */
-class MyModelTest extends PHPUnit_Framework_Testcase {
+class CGModelTest extends PHPUnit_Framework_Testcase {
     
     protected $_fixture;
     protected $_form;
     
     protected function setUp(){
         $this->_form=new Zend_Form();
-        $this->_fixture=new My_Model();
+        $this->_fixture=new CG_Model();
     }
     
     protected function tearDown(){
@@ -29,14 +24,14 @@ class MyModelTest extends PHPUnit_Framework_Testcase {
     
     // _form
     /**
-     * @expectedException My_Model_Exception
+     * @expectedException CG_Model_Exception
      */
     public function testSetFormThrowsExceptionForNonObject() {
         $this->_fixture->setForm(true);
     }
     
     /**
-     * @expectedException My_Model_Exception
+     * @expectedException CG_Model_Exception
      */
     public function testSetFormThrowsExceptionForNonZendFormObject() {
         $this->_fixture->setForm($this);

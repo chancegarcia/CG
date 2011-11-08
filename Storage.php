@@ -1,13 +1,13 @@
 <?php
 /**
  * Storage Interface
- * @category   My
+ * @category   CG
  * @version 1.0
  * @author chancegarcia.com
  * @license http://www.opensource.org/licenses/lgpl-3.0.html
  */
  
-interface My_Storage
+interface CG_Storage
 {
     public function browse();
     public function read($id=null);

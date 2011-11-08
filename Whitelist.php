@@ -8,7 +8,7 @@
  * @author chancegarcia.com
  * @license http://www.opensource.org/licenses/lgpl-3.0.html
  */
-interface My_Whitelist{
+interface CG_Whitelist{
     
     public function getWhitelist();
     public function setWhitelist($whitelist=null);

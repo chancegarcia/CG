@@ -3,14 +3,14 @@
  * Custom auth adapter that can read a whitelist before attempting an ldap
  * query.
  * 
- * @category   My
- * @package    My_Auth
- * @subpackage My_Auth_Adapter
+ * @category   CG
+ * @package    CG_Auth
+ * @subpackage CG_Auth_Adapter
  * @version 0.0.1
  * @author chancegarcia.com
  * @license http://www.opensource.org/licenses/lgpl-3.0.html
  */
- class My_Auth_Adapter_Ldap extends My_Auth_Adapter_Ldap_Abstract
+ class CG_Auth_Adapter_Ldap extends CG_Auth_Adapter_Ldap_Abstract
  {
     const LDAP_AUTHENTICATE="ldapAuthenticate";
     const DB_AUTHENTICATE="dbAuthenticate";
@@ -117,9 +117,9 @@
     {
         if ($this->_ldap===null)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an instance of Zend_Auth_Adapter_Ldap",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         return $this->_ldap;
@@ -129,9 +129,9 @@
     {
         if (!is_object($ldap)||!$ldap instanceof Zend_Auth_Adapter_Ldap)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an instance of Zend_Auth_Adapter_Ldap",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_ldap=$ldap;
@@ -141,9 +141,9 @@
     public function setDbAuth($dbAuth=null) {
         if (!is_object($dbAuth)||!$dbAuth instanceof Zend_Auth_Adapter_DbTable) 
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an instance of Zend_Auth_Adapter_DbTable",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_dbAuth=$dbAuth;
@@ -154,9 +154,9 @@
     {
         if (null===$this->_dbAuth)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an instance of Zend_Auth_Adapter_DbTable",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         return $this->_dbAuth;
@@ -166,9 +166,9 @@
     {
         if (!is_string($identity))
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a string for identity",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_identity=$identity;
@@ -179,9 +179,9 @@
     {
         if (null===$this->_identity)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please set identity with a string to continue",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         return $this->_identity;
@@ -191,9 +191,9 @@
     {
         if (!is_string($credential))
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a string for credential",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_credential=$credential;
@@ -204,9 +204,9 @@
     {
         if (null===$this->_credential)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please set credential with a string to continue",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         return $this->_credential;
@@ -215,9 +215,9 @@
     public function setTreatment($treatment=null) {
         if (!is_string($treatment))
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a string",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_treatment=$treatment;
@@ -242,22 +242,22 @@
         // should do as credential column?
         if (!is_array($entry))
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a valid array with expected keys",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         if (!array_key_exists('password',$entry))
         {
-            return My_Auth_Adapter_Ldap::LDAP_AUTHENTICATE;
+            return CG_Auth_Adapter_Ldap::LDAP_AUTHENTICATE;
         }
         else if (null===$entry['password'])
         {
-            return My_Auth_Adapter_Ldap::LDAP_AUTHENTICATE;
+            return CG_Auth_Adapter_Ldap::LDAP_AUTHENTICATE;
         } 
         else 
         {
-            return My_Auth_Adapter_Ldap::DB_AUTHENTICATE;
+            return CG_Auth_Adapter_Ldap::DB_AUTHENTICATE;
         }
         return false;
     }
@@ -266,9 +266,9 @@
     {
         if ($this->_whitelistTable===null)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an instance of Zend_Db_Table_Abstract",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         return $this->_whitelistTable;
@@ -277,9 +277,9 @@
     public function setWhitelistTable($table=null) {
         if (!is_object($table)||!$table instanceof Zend_Db_Table_Abstract)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an instance of Zend_Db_Table_Abstract",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_whitelistTable=$table;
@@ -289,9 +289,9 @@
     public function setWhitelistSelect($select=null) {
         if (!is_object($select)||!$select instanceof Zend_Db_Select)
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a valid instance of Zend_Db_Select",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         
@@ -301,9 +301,9 @@
     
     public function getWhitelistSelect() {
         if ($this->_whitelistSelect===null) {
-           throw new My_Auth_Adapter_Ldap_Exception(
+           throw new CG_Auth_Adapter_Ldap_Exception(
                 "Whitelist select object has not been set.",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         return $this->_whitelistSelect;
@@ -312,9 +312,9 @@
     public function setUseWhitelist($bool=null) {
         if (!is_bool($bool))
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a valid boolean value",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         $this->_useWhitelist=$bool;
@@ -341,9 +341,9 @@
             ||!array_key_exists('username',$whitelistEntry)
             ||!array_key_exists('role',$whitelistEntry))
         {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide an array with keys `username` and `role`",
-                My_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
+                CG_Auth_Adapter_Ldap_Exception::MISSING_DEPENDENCY
                 );
         }
         $this->_whitelistEntry=$whitelistEntry;
@@ -359,9 +359,9 @@
         if ($table===null) {
             $table=$this->getWhitelistTable();
         } else if (!is_object($table)||!$table instanceof Zend_Db_Table_Abstract) {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a valid instance of Zend_Db_Table_Abstract",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         
@@ -370,9 +370,9 @@
         }
         
         if (!is_object($select)||!$select instanceof Zend_Db_Select) {
-            throw new My_Auth_Adapter_Ldap_Exception(
+            throw new CG_Auth_Adapter_Ldap_Exception(
                 "Please provide a valid instance of Zend_Db_Select",
-                My_Auth_Adapter_Ldap_Exception::INVALID_TYPE
+                CG_Auth_Adapter_Ldap_Exception::INVALID_TYPE
                 );
         }
         
@@ -391,7 +391,7 @@
     /**
      * Compares a given username to a whitelist based on a table row query
      *
-     * @throws My_Auth_Adapter_Ldap_Exception
+     * @throws CG_Auth_Adapter_Ldap_Exception
      * @param string $username username to find a whitelist entry for
      * @return bool whether or not the username appears on a whitelist
      */

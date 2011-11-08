@@ -1,18 +1,18 @@
 <?php
 /**
- * unit tests for My_Auth_Adapter_Ldap
+ * unit tests for CG_Auth_Adapter_Ldap
  * @todo finish properly documenting these tests
- * @category    My
- * @package     My_Tests
+ * @category    CG
+ * @package     CG_Tests
  * @version     0.0.1
  * @author      chancegarcia.com
  * @license     http://www.opensource.org/licenses/lgpl-3.0.html
  */
-class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
+class CG_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
     protected $_fixture;
     
     protected function setUp(){
-        $this->_fixture=new My_Auth_Adapter_Ldap();
+        $this->_fixture=new CG_Auth_Adapter_Ldap();
     }
     
     protected function tearDown() {
@@ -67,13 +67,13 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetLdapThrowExceptionForNonObject() {
         $this->_fixture->setLdap();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetLdapThrowsExceptionForNonZendAuthAdapterLdapObject() {
         $this->_fixture->setLdap($this);
@@ -93,12 +93,12 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertAttributeEquals(
             null,
             '_ldap',
-            new My_Auth_Adapter_Ldap()
+            new CG_Auth_Adapter_Ldap()
             );
     }
     
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetLdapThrowsExceptionForNullLdapProperty() {
         $this->_fixture->getLdap();
@@ -110,7 +110,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertEquals($ldap,$this->_fixture->getLdap());
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetIdentityThrowsExceptionForNonString() {
         $this->_fixture->setIdentity();
@@ -125,7 +125,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetIdentityThrowsExceptionForUnsetIdentity() {
         $this->_fixture->getIdentity();
@@ -136,7 +136,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertEquals('foo',$this->_fixture->getIdentity());
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetCredentialThrowsExceptionForNonString() {
         $this->_fixture->setCredential();
@@ -151,7 +151,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetCredentialThrowsExceptionForUnsetCredential() {
         $this->_fixture->getCredential();
@@ -162,13 +162,13 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertEquals('baz',$this->_fixture->getCredential());
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistTableThrowsExceptionForNonObject() {
         $this->_fixture->setWhitelistTable();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistTableThrowsExceptionForNonZendDbTableAbstract() {
         $this->_fixture->setWhitelistTable($this);
@@ -190,7 +190,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetWhitelistTableThrowsExceptionForNullTableProperty() {
         $this->_fixture->getWhitelistTable();
@@ -208,13 +208,13 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertEquals($table,$this->_fixture->getWhitelistTable());
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistSelectThrowsExceptionForNonObject() {
         $this->_fixture->setWhitelistSelect();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistSelectThrowsExceptionForNonZendDbSelectObject() {
         $this->_fixture->setWhitelistSelect($this);
@@ -236,7 +236,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetWhitelistSelectThrowsExceptionForNullProperty() 
     {
@@ -262,11 +262,11 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertAttributeEquals(
             true,
             "_useWhitelist",
-            new My_Auth_Adapter_Ldap()
+            new CG_Auth_Adapter_Ldap()
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetUseWhitelistThrowsExceptionForNonBool() {
         $this->_fixture->setUseWhitelist(null);
@@ -291,18 +291,18 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertAttributeEquals(
             null,
             '_whitelistEntry',
-            new My_Auth_Adapter_Ldap()
+            new CG_Auth_Adapter_Ldap()
             );
     }
     
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistEntryThrowsExceptionForNonArray() {
         $this->_fixture->setWhitelistEntry();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistEntryThrowsExceptionForMissingUsernameKey() {
         $expected=array(
@@ -311,7 +311,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->_fixture->setWhitelistEntry($expected);
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetWhitelistEntryThrowsExceptionForMissingRoleKey() {
         $expected=array(
@@ -358,20 +358,20 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertEquals($expected,$this->_fixture->getWhitelist());
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetWhitelistEntryFromTableThrowsExceptionForNonObjectTableParameter() {
         // same as passing null,null
         $this->_fixture->getWhitelistEntryFromTable();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetWhitelistEntryFromTableThrowExceptionForNonZendDbTableAbstractTableParameter() {
         $this->_fixture->getWhitelistEntryFromTable(null,$this);
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetWhitelistEntryFromTableThrowsExceptionForNonNullNonObjectSelectArgument() {
         $mock=$this->getMock('Zend_Db_Adapter_Pdo_Sqlite',null,array(),"",false);
@@ -382,7 +382,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->_fixture->getWhitelistEntryFromTable("foo");
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetWhitelistEntryFromTableThrowsExceptionForNonZendDbSelectObjectSelectArgument() {
         $mock=$this->getMock('Zend_Db_Adapter_Pdo_Sqlite',null,array(),"",false);
@@ -448,7 +448,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testIsWhitelistedThrowsExceptionForNoIdentityPropertySet() {
         $arr=array('username'=>'foo','password'=>null,'role_id'=>1);
@@ -456,7 +456,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->_fixture->isWhitelisted();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testIsWhitelistedThrowsExceptionForMissingWhitelist() {
         $this->_fixture->setIdentity('foo');
@@ -500,13 +500,13 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
     }
     
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetDbAuthThrowsExceptionForNonObject() {
         $this->_fixture->setDbAuth();
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetDbAuthThrowsExceptionForNonZendAuthAdapterDbTableObject() {
         $this->_fixture->setDbAuth($this);
@@ -526,11 +526,11 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertAttributeEquals(
             null,
             '_dbAuth',
-            new My_Auth_Adapter_Ldap()
+            new CG_Auth_Adapter_Ldap()
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testGetDbAuthThrowsExceptionForNullProperty() {
         $this->_fixture->getDbAuth();
@@ -547,11 +547,11 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
         $this->assertAttributeEquals(
             null,
             '_treatment',
-            new My_Auth_Adapter_Ldap()
+            new CG_Auth_Adapter_Ldap()
             );
     }
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testSetTreatmentThrowsExceptionForNonString() {
         $this->_fixture->setTreatment();
@@ -588,7 +588,7 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
     }
     
     /**
-     * @expectedException My_Auth_Adapter_Ldap_Exception
+     * @expectedException CG_Auth_Adapter_Ldap_Exception
      */
     public function testDetermineMethodThrowsExceptionForNonArray() 
     {
@@ -597,22 +597,22 @@ class My_Auth_Adapter_LdapTest extends PHPUnit_Framework_Testcase {
     }
     
     public function testDetermineMethodReturnsPublicCallbackLdapAuthenticateForNoPasswordKeyInWhitelist() {
-        $this->assertEquals(My_Auth_Adapter_Ldap::LDAP_AUTHENTICATE,
+        $this->assertEquals(CG_Auth_Adapter_Ldap::LDAP_AUTHENTICATE,
         $this->_fixture->determineMethod(array()));
     }
     
     public function testDetermineMethodReturnsPublicCallbackLdapAuthenticateForNullPasswordInWhitelist() {
-        $this->assertEquals(My_Auth_Adapter_Ldap::LDAP_AUTHENTICATE,
+        $this->assertEquals(CG_Auth_Adapter_Ldap::LDAP_AUTHENTICATE,
             $this->_fixture->determineMethod(array('password'=>null)));
     }
     
     public function testDetermineMethodReturnsPublicCallbackDbAuthenticateForNonNullPasswordInWhitelist() {
-        $this->assertEquals(My_Auth_Adapter_Ldap::DB_AUTHENTICATE,
+        $this->assertEquals(CG_Auth_Adapter_Ldap::DB_AUTHENTICATE,
             $this->_fixture->determineMethod(array('password'=>'foo')));
     }
     
     public function testAuthenticateCallsIsWhitelistedMethod(){
-        $mock=$this->getMock('My_Auth_Adapter_Ldap',array('isWhitelisted'));
+        $mock=$this->getMock('CG_Auth_Adapter_Ldap',array('isWhitelisted'));
         $mock
         ->expects($this->any())
         ->method('isWhitelisted')

@@ -6,7 +6,7 @@
  object only manages single connections. refactor later to manage multiple?()
  */
 /**
- * tests for My_Ssh
+ * tests for CG_Ssh
  * @todo only implementing a few of the functions. need to implement all in the future
  * @todo finish properly documenting these tests
  * @category    My
@@ -25,7 +25,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
     
     protected function setUp()
     {
-        $this->_fixture=new My_Ssh();
+        $this->_fixture=new CG_Ssh();
 	$this->_ini=new Zend_Config_Ini('config/my/testSsh.ini','development');
 	$this->_hostname=$this->_ini->hostname;
 	$this->_username=$this->_ini->username;
@@ -41,7 +41,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
     {
         $this->assertEquals(
             SSH2_FINGERPRINT_MD5,
-            My_Ssh::FINGERPRINT_MD5
+            CG_Ssh::FINGERPRINT_MD5
             );
     }
     
@@ -49,7 +49,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_FINGERPRINT_SHA1,
-            My_Ssh::FINGERPRINT_SHA1
+            CG_Ssh::FINGERPRINT_SHA1
             );
 	}
     
@@ -57,7 +57,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_FINGERPRINT_HEX,
-            My_Ssh::FINGERPRINT_HEX
+            CG_Ssh::FINGERPRINT_HEX
             );
 	}
     
@@ -65,7 +65,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_FINGERPRINT_RAW,
-            My_Ssh::FINGERPRINT_RAW
+            CG_Ssh::FINGERPRINT_RAW
             );
 	}
     
@@ -73,7 +73,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_TERM_UNIT_CHARS,
-            My_Ssh::TERM_UNIT_CHARS
+            CG_Ssh::TERM_UNIT_CHARS
             );
 	}
     
@@ -81,7 +81,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_TERM_UNIT_PIXELS,
-            My_Ssh::TERM_UNIT_PIXELS
+            CG_Ssh::TERM_UNIT_PIXELS
             );
 	}
     
@@ -89,7 +89,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_DEFAULT_TERM_WIDTH,
-            My_Ssh::DEFAULT_TERM_WIDTH
+            CG_Ssh::DEFAULT_TERM_WIDTH
             );
 	}
     
@@ -97,7 +97,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_DEFAULT_TERM_HEIGHT,
-            My_Ssh::DEFAULT_TERM_HEIGHT
+            CG_Ssh::DEFAULT_TERM_HEIGHT
             );
 	}
     
@@ -105,7 +105,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_DEFAULT_TERM_UNIT,
-            My_Ssh::DEFAULT_TERM_UNIT
+            CG_Ssh::DEFAULT_TERM_UNIT
             );
 	}
     
@@ -113,7 +113,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_STREAM_STDIO,
-            My_Ssh::STREAM_STDIO
+            CG_Ssh::STREAM_STDIO
             );
 	}
     
@@ -121,7 +121,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_STREAM_STDERR,
-            My_Ssh::STREAM_STDERR
+            CG_Ssh::STREAM_STDERR
             );
 	}
     
@@ -129,7 +129,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	{
 		$this->assertEquals(
             SSH2_DEFAULT_TERMINAL,
-            My_Ssh::DEFAULT_TERMINAL
+            CG_Ssh::DEFAULT_TERMINAL
             );
 	}
 	
@@ -143,7 +143,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testSetHostnameThrowsExceptionForNonString()
 	{
@@ -179,7 +179,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testSetPortThrowsExceptionForNonNumeric()
 	{
@@ -187,7 +187,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testSetPortThrowsExceptionForNonIntNumeric()
 	{
@@ -225,7 +225,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testSetUsernameThrowsExceptionForNonString()
 	{
@@ -269,9 +269,9 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	    try 
 	    {
 	        $this->_fixture->setIdentityFile($dir);
-	    } catch (My_Ssh_Exception $mse) {
+	    } catch (CG_Ssh_Exception $mse) {
 	        rmdir($dir);
-	        if ($mse->getCode()==My_Ssh_Exception::INVALID_IDENTITY_FILE)
+	        if ($mse->getCode()==CG_Ssh_Exception::INVALID_IDENTITY_FILE)
 	        {
 	            return;
 	        }
@@ -314,7 +314,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testSetPasswordThrowsExeptionForNonString()
 	{
@@ -352,7 +352,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testSetConnectionThrowsExceptionForNonResource()
 	{
@@ -365,9 +365,9 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	    $d=opendir('/tmp');
 	    try{
 	        $this->_fixture->setConnection($d);
-	    } catch (My_Ssh_Exception $mse) {
+	    } catch (CG_Ssh_Exception $mse) {
 	        closedir($d);
-	        if ($mse->getCode()==My_Ssh_Exception::INVALID_RESOURCE_TYPE)
+	        if ($mse->getCode()==CG_Ssh_Exception::INVALID_RESOURCE_TYPE)
 	        {
 	            return;
 	        }
@@ -439,7 +439,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	
 	/**
 	 * @depends testHostnamePropertyInitializesNull
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testConnectThrowsExecptionForNullHostname()
 	{
@@ -500,7 +500,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	public function testConstructorCallsInit()
 	{
 	    $msg="was called";
-	    $mock=$this->getMock('My_Ssh');
+	    $mock=$this->getMock('CG_Ssh');
 	    $mock->expects($this->any())
 	    ->method('init')
 	    ->will($this->throwException(new Exception($msg,0)));
@@ -520,7 +520,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	public function testInitReturnsSelf()
 	{
 	    $this->assertEquals(
-	        new My_Ssh(),
+	        new CG_Ssh(),
 	        $this->_fixture->init()
 	        );
 	}
@@ -535,7 +535,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	}
 	
 	/**
-     * @expectedException My_Ssh_Exception
+     * @expectedException CG_Ssh_Exception
      */
 	public function testSetOptionsThrowsExceptionForNonArray()
 	{
@@ -615,7 +615,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	*/
 	/**
 	 * @depends testSsh2AuthPasswordFunctionExists
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testAuthPasswordMethodThrowsExceptionForMissingConnectionProperty()
 	{
@@ -628,7 +628,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	/**
 	 * @depends testSsh2AuthPasswordFunctionExists
 	 * @depends testUsernamePropertyInitializesNull
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testAuthPasswordThrowsExceptionForMissingUsernameProperty()
 	{
@@ -707,7 +707,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	
 	/**
 	 * @depends testSsh2ExecFunctionExists
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testExecThrowsExceptionForNonStringArgument()
 	{
@@ -725,7 +725,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	/**
 	 * @depends testSsh2ExecFunctionExists
 	 * @depends testResetConnectionSetsConnectionPropertyToFalse
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testExecThrowsExceptionForMissingConnection()
 	{
@@ -747,7 +747,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	 */
 	public function testExecReturnsFalseOnFailureAndAuthenticatedPropertyIsTrue()
 	{
-	    $mock=$this->getMock('My_Ssh',
+	    $mock=$this->getMock('CG_Ssh',
 	        array(
 	            "authenticated",
 	            "exec"
@@ -799,7 +799,7 @@ class MySshTest extends PHPUnit_Framework_Testcase
 	
 	/**
 	 * @depends testSsh2FetchStreamFunctionExists
-	 * @expectedException My_Ssh_Exception
+	 * @expectedException CG_Ssh_Exception
 	 */
 	public function testFetchStreamThrowsExceptionForNonResourceStreamArgument()
 	{

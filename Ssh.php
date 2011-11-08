@@ -3,12 +3,12 @@
  * Encapsulate the ssh2 PECL library [@link http://www.php.net/manual/en/book.ssh2.php]
  * into a class for reuse.
  * @todo only implementing a few of the functions. need to implement all in the future
- * @category   My
+ * @category   CG
  * @version 0.1
  * @author chancegarcia.com
  * @license http://www.opensource.org/licenses/lgpl-3.0.html
  */
-class My_Ssh{
+class CG_Ssh{
     
     const FINGERPRINT_SHA1=SSH2_FINGERPRINT_SHA1;
     const FINGERPRINT_MD5=SSH2_FINGERPRINT_MD5;
@@ -71,7 +71,7 @@ class My_Ssh{
     /**
      * Create new instance of SSH client with optional options
      * @param array $options options array with keys equal to setable properties
-     * @return My_Ssh returns self for fluid interface
+     * @return CG_Ssh returns self for fluid interface
      */
     public function __construct($options=null)
     {
@@ -86,7 +86,7 @@ class My_Ssh{
     /**
      * Any class that extends this can initialize child construction operations
      * safely here.
-     * @return My_Ssh returns self for fluid interface
+     * @return CG_Ssh returns self for fluid interface
      */
     public function init()
     {
@@ -96,15 +96,15 @@ class My_Ssh{
     /**
      * set hostname property
      * @param string $hostname host to establish connection with
-     * @return My_Ssh returns self for fluid interface
+     * @return CG_Ssh returns self for fluid interface
      */
     public function setHostname($hostname=null)
     {
         if (!is_string($hostname))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "Please provide hostname as a string.",
-                My_Ssh_Exception::INVALID_HOSTNAME
+                CG_Ssh_Exception::INVALID_HOSTNAME
                 );
         }
         
@@ -124,15 +124,15 @@ class My_Ssh{
     /**
      * Set port property
      * @param int $port port to connect to
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function setPort($port=null)
     {
         if (!is_numeric($port)||!is_int($port))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "Port must be a valid integer value.",
-                My_Ssh_Exception::INVALID_PORT
+                CG_Ssh_Exception::INVALID_PORT
                 );
         }
         $this->_port=$port;
@@ -151,15 +151,15 @@ class My_Ssh{
     /**
      * Set protected username property
      * @param string $username username need for authentication
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function setUsername($username=null)
     {
         if (!is_string($username))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please provide a valid string",
-                My_Ssh_Exception::INVALID_USERNAME
+                CG_Ssh_Exception::INVALID_USERNAME
                 );
         }
         $this->_username=$username;
@@ -178,15 +178,15 @@ class My_Ssh{
     /**
      * Set path to identity file. Absolute path is recommended for best results
      * @param string $identityFile path to identity file
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function setIdentityFile($identityFile=null)
     {
         if (!is_file($identityFile))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please provide a path to the identity file",
-                My_Ssh_Exception::INVALID_IDENTITY_FILE
+                CG_Ssh_Exception::INVALID_IDENTITY_FILE
                 );
         }
         $this->_identityFile=$identityFile;
@@ -205,15 +205,15 @@ class My_Ssh{
     /**
      * set password property
      * @param string $password
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function setPassword($password=null)
     {
         if (!is_string($password))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please provide a string value",
-                My_Ssh_Exception::INVALID_PASSWORD_VALUE
+                CG_Ssh_Exception::INVALID_PASSWORD_VALUE
                 );
         }
         $this->_password=$password;
@@ -232,15 +232,15 @@ class My_Ssh{
     /**
      *  Set an existing ssh connection to use
      * @param bool|resource $connection set the connection to false when needing to return to default state
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function setConnection($connection=null)
     {
         if (!is_resource($connection) || "SSH2 Session"!==get_resource_type($connection)) 
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please provide value false to reset connection or a valid connection",
-                My_Ssh_Exception::INVALID_RESOURCE_TYPE
+                CG_Ssh_Exception::INVALID_RESOURCE_TYPE
                 );
         }
         
@@ -259,7 +259,7 @@ class My_Ssh{
     
     /**
      * set connection property back to false
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function resetConnection()
     {
@@ -270,15 +270,15 @@ class My_Ssh{
     /**
      * set protected options property. uses array with keys equal to setable options
      * @param array $options setable options as key/value pairs. silently ignores invalid property setters
-     * @return My_Ssh return self for fluid interface
+     * @return CG_Ssh return self for fluid interface
      */
     public function setOptions($options=null)
     {
         if (!is_array($options))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please give an array of valid options",
-                My_Ssh_Exception::INVALID_OPTIONS
+                CG_Ssh_Exception::INVALID_OPTIONS
                 );
         }
         
@@ -322,9 +322,9 @@ class My_Ssh{
     {
         if (!is_string($this->getHostname()))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please provide a host to connect to.",
-                My_Ssh_Exception::MISSING_HOSTNAME
+                CG_Ssh_Exception::MISSING_HOSTNAME
                 );
         }
         
@@ -347,18 +347,18 @@ class My_Ssh{
         $con=$this->connect();
         if (false===$con)
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "failed to establish connection for authentication attempt",
-                My_Ssh_Exception::FAILED_CONNECTION
+                CG_Ssh_Exception::FAILED_CONNECTION
                 );
         }
         
         $username=$this->getUsername();
         if (null===$username)
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "unable to find username to authenticate with",
-                My_Ssh_Exception::MISSING_USERNAME
+                CG_Ssh_Exception::MISSING_USERNAME
                 );
         }
         
@@ -374,9 +374,9 @@ class My_Ssh{
     {
         if (!is_string($cmd))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "please provide a string command",
-                My_Ssh_Exception::INVALID_COMMAND_ARGUMENT
+                CG_Ssh_Exception::INVALID_COMMAND_ARGUMENT
                 );
         }
         
@@ -387,9 +387,9 @@ class My_Ssh{
         
         if (!is_resource($this->getConnection()))
         {
-            throw new My_Ssh_Exception(
+            throw new CG_Ssh_Exception(
                 "unable to find connection",
-                My_Ssh_Exception::MISSING_CONNECTION
+                CG_Ssh_Exception::MISSING_CONNECTION
                 );
         }
         

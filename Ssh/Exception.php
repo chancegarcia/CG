@@ -1,13 +1,13 @@
 <?php
 /**
- * Exceptions for My_Ssh
- * @category   My
- * @package    My_Ssh
+ * Exceptions for CG_Ssh
+ * @category   CG
+ * @package    CG_Ssh
  * @version 1.0
  * @author chancegarcia.com
  * @license http://www.opensource.org/licenses/lgpl-3.0.html
  */
-class My_Ssh_Exception extends Exception{
+class CG_Ssh_Exception extends Exception{
     const INVALID_HOSTNAME=1;
     const INVALID_PORT=2;
     const INVALID_USERNAME=3;
